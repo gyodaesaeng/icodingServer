@@ -1,10 +1,10 @@
 <?php
  include "Snoopy.class.php";
+ $o="";
  $snoopy = new Snoopy;
- if($snoopy->fetch("http://www.naver.com/"))
- {
-  echo print_r($snoopy->results);
- }
- else
-  echo "error fetching document: ".$snoopy->error."\n";
+ $snoopy->fetch("https://www.acmicpc.net/user/jaejin0209");
+ $txt=$snoopy->results;
+ $rex="/\<div class=\"panel-body\"\>*\<\/div\>/";
+ preg_match_all($rex,$txt,$o);
+ print_r($o);
 ?>
