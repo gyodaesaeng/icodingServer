@@ -4,7 +4,7 @@
  $snoopy = new Snoopy;
  $snoopy->fetch("https://www.acmicpc.net/user/jaejin0209");
  $txt=$snoopy->results;
- $rex="class=\"result-ac\"\>(.*)\<\/a\>/";
+ $rex="class=\"result-ac\"\>(.*?)\<\/a\>/";
  preg_match_all($rex,$txt,$o);
- print_r($o[0][0]);
+ print_r($o);
 ?>
