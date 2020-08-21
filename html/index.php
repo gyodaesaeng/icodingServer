@@ -6,5 +6,5 @@
  $txt=$snoopy->results;
  $rex="/\<div class=\"panel-body\"\>(.*)\<\/div\>/";
  preg_match_all($rex,$txt,$o);
- print_r($o[0][0]);
+ print_r($o);
 ?>
