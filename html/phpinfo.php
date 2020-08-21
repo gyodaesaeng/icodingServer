@@ -1,4 +1,4 @@
-<?
+<?php
  include "Snoopy.class.php";
  $snoopy = new Snoopy;
  if($snoopy->fetch("http://www.naver.com/"))
