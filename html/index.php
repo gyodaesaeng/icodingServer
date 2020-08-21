@@ -6,5 +6,5 @@
  $txt=$snoopy->results;
  $rex="class=\"result-ac\"\>(.*)\<\/a\>/";
  preg_match_all($rex,$txt,$o);
- print_r($o);
+ print_r($o[0][0]);
 ?>
