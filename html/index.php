@@ -7,7 +7,7 @@
  $ret = $html->find('div[class=panel-body]');
  foreach($ret[0]->find('span[class=problem_number]') as $element){
 	$n = $element->first_child()->innertext;
-	if((int)mysqli_query($s,"SELECT EXISTS (SELECT * FROM CORRECT WHERE ID='jaejin0209', PROBLEM={$n}) as success;")<1){
+	if(mysqli_num_rows(mysqli_query($s,"SELECT * FROM CORRECT WHERE ID='jaejin0209' AND PROBLEM={$n}"))<1){
 		mysqli_query($s,"INSERT INTO CORRECT VALUES('jaejin0209',{$n});");
 	}
  }
