@@ -1,14 +1,44 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>CNUE</title>
+    <style>
+      body {
+        font-family: Consolas, monospace;
+        font-family: 12px;
+      }
+      table {
+        width: 100%;
+      }
+      th, td {
+        padding: 10px;
+        border-bottom: 1px solid #dadada;
+      }
+    </style>
+  </head>
+   <body>
+    <table>
+      <thead>
+        <tr>
+          <th>d</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>hire_date</th>
+        </tr>
+      </thead>
+      <tbody>
 <?php
  error_reporting(E_ALL);
  ini_set("display_errors", 1);
- include_once 'simple_html_dom.php';
  $s = mysqli_connect("localhost", "root", "dlwowls1","DB");
- $html = file_get_html('https://www.acmicpc.net/user/jaejin0209');
- $ret = $html->find('div[class=panel-body]');
- foreach($ret[0]->find('span[class=problem_number]') as $element){
-	$n = $element->first_child()->innertext;
-	if(mysqli_num_rows(mysqli_query($s,"SELECT * FROM CORRECT WHERE ID='jaejin0209' AND PROBLEM={$n}"))<1){
-		mysqli_query($s,"INSERT INTO CORRECT VALUES('jaejin0209',{$n});");
-	}
- }
+ $id = "jaejin0209";
+$view = mysqli_query($s,"SELECT * FROM USER_INFO ORDER BY CORRECT DESC");
+while($user = mysqli_fetch_array($view)){
+	echo "<tr><td>{$user['ID']}</td><td>{$user['NAME']}</td><td>{$user['STATUS_MESSAGE']}</td><td>{$user['CORRECT']}</td><td>{$user['SUBMIT']}</td></tr>"
+}
 ?>
+</tbody>
+    </table>
+  </body>
+</html>
