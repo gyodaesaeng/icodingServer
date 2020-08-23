@@ -35,7 +35,7 @@
  $id = "jaejin0209";
 $view = mysqli_query($s,"SELECT * FROM USER_INFO ORDER BY CORRECT DESC");
 while($user = mysqli_fetch_array($view)){
-	echo "<tr><td>{$user['ID']}</td><td>{$user['NAME']}</td><td>{$user['STATUS_MESSAGE']}</td><td>{$user['CORRECT']}</td><td>{$user['SUBMIT']}</td></tr>"
+	echo "<tr><td>{$user['ID']}</td><td>{$user['NAME']}</td><td>{$user['STATUS_MESSAGE']}</td><td>{$user['CORRECT']}</td><td>{$user['SUBMIT']}</td></tr>";
 }
 ?>
 </tbody>
