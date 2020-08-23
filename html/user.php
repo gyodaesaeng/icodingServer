@@ -11,6 +11,9 @@
 	$id = $_GET["id"];
 	if(array_key_exists('update',$_POST)){
 		$html = file_get_html("https://www.acmicpc.net/user/{$id}");
+		$ret = $html->find('table id="statics"]')[0]->find('a');
+		mysqli_query($s,"UPDATE USER_INFO SET CORRECT = {$ret[0]->innertext} WHERE ID='{$id}'");
+		mysqli_query($s,"UPDATE USER_INFO SET SUBMIT = {$ret[1]->innertext} WHERE ID='{$id}'");
 		$ret = $html->find('div[class=panel-body]');
 		foreach($ret[0]->find('span[class=problem_number]') as $element){
 			$n = $element->first_child()->innertext;
